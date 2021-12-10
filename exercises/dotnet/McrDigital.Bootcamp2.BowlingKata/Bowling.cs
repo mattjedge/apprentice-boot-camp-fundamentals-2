@@ -5,12 +5,13 @@
         public int FinalScore(Frame[] rolls)
         {
             var total = 0;
-            for (var i = 0; i < rolls.Length; i++)
+            for (var currentRoll = 0; currentRoll < rolls.Length; currentRoll++)
             {
-                total += rolls[i].Total;
-                if (rolls[i].Total == 10)
+                total += rolls[currentRoll].Total;
+
+                if (rolls[currentRoll].Spare)
                 {
-                    total += rolls[i + 1].FirstRoll;
+                    total += rolls[currentRoll + 1].FirstRoll;
                 }
             }
 
@@ -23,6 +24,7 @@
         public int FirstRoll { get; set; }
         public int SecondRoll { get; set; }
         public int Total => FirstRoll + SecondRoll;
+        public bool Spare => Total == 10;
 
         public Frame(int rollOne, int rollTwo)
         {
