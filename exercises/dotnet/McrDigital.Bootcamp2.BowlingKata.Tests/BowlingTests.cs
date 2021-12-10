@@ -4,9 +4,12 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
 {
     public class BowlingTests
     {
+        private Bowling _subject;
+
         [SetUp]
         public void Setup()
         {
+            _subject = new Bowling();
         }
 
         [Test]
@@ -26,9 +29,9 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
                 0, 0
             };
 
-            var bowling = new Bowling();
+            var result = _subject.FinalScore(rolls);
 
-            Assert.That(bowling.FinalScore(rolls), Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(0));
         }
 
         [Test]
@@ -36,21 +39,21 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3,
-                2, 3
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1,
+                1, 1
             };
 
-            var bowling = new Bowling();
+            var result = _subject.FinalScore(rolls);
 
-            Assert.That(bowling.FinalScore(rolls), Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(20));
         }
     }
 }
