@@ -55,5 +55,28 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
 
             Assert.That(result, Is.EqualTo(20));
         }
+        
+        [Test]
+        [Ignore("Frame concept must be introduced")]
+        public void Rolling_a_spare_adds_next_roll_bonus()
+        {
+            var rolls = new[]
+            {
+                5, 5,
+                1, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0,
+                0, 0
+            };
+
+            var result = _subject.FinalScore(rolls);
+
+            Assert.That(result, Is.EqualTo(12));
+        }
     }
 }
