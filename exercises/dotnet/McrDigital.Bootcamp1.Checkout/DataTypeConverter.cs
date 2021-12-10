@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace apprentice_bootcamp_fundamentals_2
+namespace McrDigital.Bootcamp1.Checkout
 {
     public static class DataTypeConverter
     {

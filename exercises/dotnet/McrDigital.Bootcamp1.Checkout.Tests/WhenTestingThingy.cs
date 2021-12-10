@@ -1,7 +1,7 @@
-using apprentice_bootcamp_fundamentals_2;
+using McrDigital.Bootcamp1.Checkout;
 using Xunit;
 
-namespace UnitTests
+namespace McrDigital.Bootcamp1.Checkout.Tests
 {
     public class WhenTestingThingy
     {
