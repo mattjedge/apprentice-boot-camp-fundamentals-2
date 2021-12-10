@@ -4,7 +4,17 @@
     {
         public int FinalScore(Frame[] rolls)
         {
-            return rolls.Sum(x => x.Total);
+            var total = 0;
+            for (var i = 0; i < rolls.Length; i++)
+            {
+                total += rolls[i].Total;
+                if (rolls[i].Total == 10)
+                {
+                    total += rolls[i + 1].FirstRoll;
+                }
+            }
+
+            return total;
         }
     }
 
