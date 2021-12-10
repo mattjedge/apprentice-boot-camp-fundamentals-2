@@ -2,21 +2,25 @@
 {
     public class Bowling
     {
-        public int FinalScore(Frame[] rolls)
+        private const int FramesPerGame = 10;
+        public int Score(Frame[] frames)
         {
             var total = 0;
-            for (var currentRoll = 0; currentRoll < rolls.Length; currentRoll++)
+            for (var currentFrame = 0; currentFrame <= FramesPerGame - 1; currentFrame++)
             {
-                total += rolls[currentRoll].Total;
+                total += frames[currentFrame].Total;
 
-                if (rolls[currentRoll].Strike)
+                if (frames[currentFrame].Strike)
                 {
-                    total += rolls[currentRoll + 1].Total;
+                    var nextFrame = frames[currentFrame + 1];
+                    
+                    total += nextFrame.FirstRoll;
+                    total += nextFrame.Strike ? frames[currentFrame + 2].FirstRoll : nextFrame.SecondRoll;
                 }
 
-                if (rolls[currentRoll].Spare)
+                if (frames[currentFrame].Spare)
                 {
-                    total += rolls[currentRoll + 1].FirstRoll;
+                    total += frames[currentFrame + 1].FirstRoll;
                 }
             }
 
