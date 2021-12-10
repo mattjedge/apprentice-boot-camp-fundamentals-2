@@ -4,7 +4,7 @@
     {
         public int FinalScore(int[] rolls)
         {
-            return 0;
+            return rolls.Sum();
         }
     }
 }

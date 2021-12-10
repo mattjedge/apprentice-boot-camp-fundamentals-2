@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace McrDigital.Bootcamp2.BowlingKata.Tests
 {
-    public class Tests
+    public class BowlingTests
     {
         [SetUp]
         public void Setup()
@@ -29,6 +29,28 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
             var bowling = new Bowling();
 
             Assert.That(bowling.FinalScore(rolls), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Pins_knocked_over_without_special_scoring_rules_return_sum_of_pins()
+        {
+            var rolls = new[]
+            {
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3,
+                2, 3
+            };
+
+            var bowling = new Bowling();
+
+            Assert.That(bowling.FinalScore(rolls), Is.EqualTo(50));
         }
     }
 }
