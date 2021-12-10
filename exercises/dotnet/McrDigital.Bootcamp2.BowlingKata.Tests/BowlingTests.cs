@@ -17,16 +17,16 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0)
             };
 
             var result = _subject.FinalScore(rolls);
@@ -39,16 +39,16 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1,
-                1, 1
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1),
+                new Frame(1, 1)
             };
 
             var result = _subject.FinalScore(rolls);
@@ -57,21 +57,20 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         }
         
         [Test]
-        [Ignore("Frame concept must be introduced")]
         public void Rolling_a_spare_adds_next_roll_bonus()
         {
             var rolls = new[]
             {
-                5, 5,
-                1, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0,
-                0, 0
+                new Frame(5, 5),
+                new Frame(1, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0)
             };
 
             var result = _subject.FinalScore(rolls);
