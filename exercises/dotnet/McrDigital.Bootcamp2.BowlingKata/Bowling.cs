@@ -9,6 +9,11 @@
             {
                 total += rolls[currentRoll].Total;
 
+                if (rolls[currentRoll].Strike)
+                {
+                    total += rolls[currentRoll + 1].Total;
+                }
+
                 if (rolls[currentRoll].Spare)
                 {
                     total += rolls[currentRoll + 1].FirstRoll;

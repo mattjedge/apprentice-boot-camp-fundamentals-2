@@ -57,7 +57,7 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         }
         
         [Test]
-        public void Rolling_a_spare_adds_next_roll_bonus()
+        public void Rolling_a_spare_adds_next_roll_as_bonus()
         {
             var rolls = new[]
             {
@@ -79,7 +79,7 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         }
 
         [Test]
-        public void STRIKE_adds_next_two_rolls_bonus()
+        public void STRIKE_adds_next_two_rolls_as_bonus()
         {
             var rolls = new[]
             {
