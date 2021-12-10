@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using NUnit.Framework;
 
 namespace McrDigital.Bootcamp2.BowlingKata.Tests
@@ -5,6 +6,11 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
     public class BowlingTests
     {
         private Bowling _subject;
+        private readonly Frame _strike = new Frame(10);
+        private readonly Frame _spare = new Frame(4, 6);
+        private readonly Frame _zeroPins = new Frame(0, 0);
+        private readonly Frame _nineZero = new Frame(9, 0);
+        private readonly Frame _onePinEachRoll = new Frame(1, 1);
 
         [SetUp]
         public void Setup()
@@ -17,19 +23,19 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0)
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins
             };
 
-            var result = _subject.FinalScore(rolls);
+            var result = _subject.Score(rolls);
 
             Assert.That(result, Is.EqualTo(0));
         }
@@ -39,19 +45,19 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1),
-                new Frame(1, 1)
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll,
+                _onePinEachRoll
             };
 
-            var result = _subject.FinalScore(rolls);
+            var result = _subject.Score(rolls);
 
             Assert.That(result, Is.EqualTo(20));
         }
@@ -61,19 +67,19 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                new Frame(5, 5),
+                _spare,
                 new Frame(1, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0)
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins
             };
 
-            var result = _subject.FinalScore(rolls);
+            var result = _subject.Score(rolls);
 
             Assert.That(result, Is.EqualTo(12));
         }
@@ -83,21 +89,69 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
         {
             var rolls = new[]
             {
-                new Frame(10),
-                new Frame(1, 1),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0),
-                new Frame(0, 0)
+                _strike,
+                _onePinEachRoll,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins,
+                _zeroPins
             };
 
-            var result = _subject.FinalScore(rolls);
+            var result = _subject.Score(rolls);
 
             Assert.That(result, Is.EqualTo(14));
+        }
+
+        [Test]
+        public void So_close_every_time()
+        {
+            var rolls = new[]
+            {
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero,
+                _nineZero
+            };
+
+            var result = _subject.Score(rolls);
+
+            Assert.That(result, Is.EqualTo(90));
+
+        }
+
+        [Test]
+        public void Perfect_game_scores_300_points()
+        {
+            var bonusStrikeFrame = new Frame(10);
+            var rolls = new[]
+            {
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                _strike,
+                bonusStrikeFrame,
+                bonusStrikeFrame
+            };
+
+            var result = _subject.Score(rolls);
+
+            Assert.That(result, Is.EqualTo(300));
         }
     }
 }
