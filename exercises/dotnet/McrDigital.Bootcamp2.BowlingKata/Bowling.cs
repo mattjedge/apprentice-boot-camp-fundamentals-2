@@ -21,15 +21,22 @@
 
     public class Frame
     {
-        public int FirstRoll { get; set; }
-        public int SecondRoll { get; set; }
+        public int FirstRoll { get; }
+        public int SecondRoll { get; }
         public int Total => FirstRoll + SecondRoll;
-        public bool Spare => Total == 10;
+        public bool Spare => Total == 10 && SecondRoll != 0;
+        public bool Strike { get; }
 
         public Frame(int rollOne, int rollTwo)
         {
             FirstRoll = rollOne;
             SecondRoll = rollTwo;
+        }
+
+        public Frame(int rollOne)
+        {
+            FirstRoll = rollOne;
+            Strike = true;
         }
     }
 }

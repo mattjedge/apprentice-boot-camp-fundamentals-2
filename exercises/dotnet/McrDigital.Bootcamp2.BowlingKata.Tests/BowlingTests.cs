@@ -77,5 +77,27 @@ namespace McrDigital.Bootcamp2.BowlingKata.Tests
 
             Assert.That(result, Is.EqualTo(12));
         }
+
+        [Test]
+        public void STRIKE_adds_next_two_rolls_bonus()
+        {
+            var rolls = new[]
+            {
+                new Frame(10),
+                new Frame(1, 1),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0),
+                new Frame(0, 0)
+            };
+
+            var result = _subject.FinalScore(rolls);
+
+            Assert.That(result, Is.EqualTo(14));
+        }
     }
 }
