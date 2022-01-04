@@ -17,3 +17,4 @@ node_modules
 package-lock.json
 
 *.pyc
+/exercises/dotnet/.vs/McrDigital.Bootcamp1.Checkout/v17/.suo
